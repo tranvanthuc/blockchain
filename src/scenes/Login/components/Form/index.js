@@ -8,6 +8,7 @@ import { FaLock, FaChevronCircleRight } from "react-icons/fa";
 import style from "./style";
 import validate from "./validate";
 import styles from "./style";
+import "./style.scss";
 
 class FormLogin extends Component {
   render() {
