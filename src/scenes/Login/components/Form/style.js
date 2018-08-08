@@ -9,6 +9,12 @@ const styles = theme => ({
   textField: {
     fontSize: "16px",
     marginTop: theme.spacing.unit * 2
+  },
+  margin: {
+    margin: theme.spacing.unit
+  },
+  icon: {
+    marginBottom: theme.spacing.unit * 0.5
   }
 });
 

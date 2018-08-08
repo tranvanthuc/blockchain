@@ -3,11 +3,20 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { renderTextField } from "components/MaterialForm";
 import { withStyles } from "@material-ui/core/styles";
-import { Paper, Typography, Grid, Button, Icon } from "@material-ui/core";
+import {
+  Paper,
+  Typography,
+  Grid,
+  Button,
+  Icon,
+  TextField,
+  InputAdornment
+} from "@material-ui/core";
 import { FaLock, FaChevronCircleRight } from "react-icons/fa";
 import validate from "./validate";
 import styles from "./style";
 import "./style.scss";
+import { IoMdLock } from "react-icons/io";
 
 class FormLogin extends Component {
   render() {
@@ -26,20 +35,24 @@ class FormLogin extends Component {
               Login
             </Typography>
 
-            <Typography component="h6">
+            <Typography className="mt-1" component="h6">
               Please check that you are visiting https://bit.com
             </Typography>
             <form onSubmit={handleSubmit}>
-              <Grid item xs={12}>
-                <Field
-                  className={classes.textField}
-                  name="link"
-                  component={renderTextField}
-                  type="text"
-                  placeholder="Link"
-                  fullWidth={true}
-                />
-              </Grid>
+              <Field
+                name="link"
+                component={renderTextField}
+                disabled={true}
+                fullWidth={true}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IoMdLock className={classes.icon} />
+                    </InputAdornment>
+                  )
+                }}
+              />
+
               <Grid item xs={12}>
                 <Field
                   name="email"
