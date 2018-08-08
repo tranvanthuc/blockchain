@@ -1,26 +1,34 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
-import { renderTextField } from "components/MaterialForm";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { renderTextField } from 'components/MaterialForm';
+import { withStyles } from '@material-ui/core/styles';
 import {
   Paper,
   Typography,
   Grid,
   Button,
-  Icon,
-  TextField,
   InputAdornment
-} from "@material-ui/core";
-import { FaLock, FaChevronCircleRight } from "react-icons/fa";
-import validate from "./validate";
-import styles from "./style";
-import "./style.scss";
-import { IoMdLock } from "react-icons/io";
+} from '@material-ui/core';
+import validate from './validate';
+import styles from './style';
+import './style.scss';
+import { Lock } from '@material-ui/icons';
 
 class FormLogin extends Component {
+  componentDidMount() {
+    this.props.initialize(this.props.data);
+  }
+
   render() {
-    const { handleSubmit, pristine, reset, submitting, classes } = this.props;
+    const {
+      handleSubmit,
+      pristine,
+      reset,
+      submitting,
+      classes,
+      data
+    } = this.props;
 
     return (
       <div className={classes.root}>
@@ -30,24 +38,25 @@ class FormLogin extends Component {
               variant="headline"
               align="center"
               component="h1"
-              className="login-header"
+              className="login-header mb-3"
             >
               Login
             </Typography>
 
-            <Typography className="mt-1" component="h6">
-              Please check that you are visiting https://bit.com
+            <Typography className="my-2" component="h6">
+              Please check that you are visiting {data.link}
             </Typography>
             <form onSubmit={handleSubmit}>
               <Field
                 name="link"
+                required={false}
                 component={renderTextField}
                 disabled={true}
                 fullWidth={true}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <IoMdLock className={classes.icon} />
+                      <Lock className={classes.icon} />
                     </InputAdornment>
                   )
                 }}
@@ -74,7 +83,7 @@ class FormLogin extends Component {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography align="right" component="h6" className="mt-5">
+                <Typography align="right" component="h6" className="my-2">
                   <Link to="/#">Forgot password</Link>
                 </Typography>
               </Grid>
@@ -86,10 +95,9 @@ class FormLogin extends Component {
                   fullWidth={true}
                 >
                   Send
-                  <FaChevronCircleRight />
                 </Button>
               </Grid>
-              <Typography align="center" component="h6">
+              <Typography align="center" component="h6" className="my-2">
                 Not on bit yet? <Link to="/register">Register</Link>
               </Typography>
             </form>
@@ -99,9 +107,9 @@ class FormLogin extends Component {
     );
   }
 }
-FormLogin = withStyles(styles)(FormLogin);
+const styleFormLogin = withStyles(styles)(FormLogin);
 
 export default reduxForm({
-  form: "fLogin",
+  form: 'fLogin',
   validate
-})(FormLogin);
+})(styleFormLogin);

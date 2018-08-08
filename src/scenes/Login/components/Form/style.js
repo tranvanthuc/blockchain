@@ -1,13 +1,13 @@
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 10
   },
   paper: {
-    margin: "0 auto",
-    padding: theme.spacing.unit * 2
+    margin: '0 auto',
+    padding: theme.spacing.unit * 3
   },
   textField: {
-    fontSize: "16px",
+    fontSize: '16px',
     marginTop: theme.spacing.unit * 2
   },
   margin: {

@@ -1,5 +1,5 @@
-import React from "react";
-import { TextField, Checkbox, Select, RadioGroup } from "@material-ui/core";
+import React from 'react';
+import { TextField, Checkbox, Select, RadioGroup } from '@material-ui/core';
 
 export const renderTextField = ({
   input,
@@ -46,7 +46,6 @@ export const renderSelect = ({
     errorText={touched && error}
     {...input}
     onChange={(event, index, value) => input.onChange(value)}
-    children={children}
     {...custom}
   />
 );
