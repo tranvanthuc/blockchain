@@ -5,7 +5,6 @@ import { renderTextField } from "components/MaterialForm";
 import { withStyles } from "@material-ui/core/styles";
 import { Paper, Typography, Grid, Button, Icon } from "@material-ui/core";
 import { FaLock, FaChevronCircleRight } from "react-icons/fa";
-import style from "./style";
 import validate from "./validate";
 import styles from "./style";
 import "./style.scss";
@@ -18,7 +17,12 @@ class FormLogin extends Component {
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Paper className={classes.paper}>
-            <Typography variant="headline" component="h1">
+            <Typography
+              variant="headline"
+              align="center"
+              component="h1"
+              className="login-header"
+            >
               Login
             </Typography>
 
@@ -57,7 +61,7 @@ class FormLogin extends Component {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography align="right" component="h6">
+                <Typography align="right" component="h6" className="mt-5">
                   <Link to="/#">Forgot password</Link>
                 </Typography>
               </Grid>
