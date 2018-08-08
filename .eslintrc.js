@@ -4,31 +4,31 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
-  parser: "babel-eslint",
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  parser: 'babel-eslint',
   parserOptions: {
-    sourceType: "module"
+    sourceType: 'module'
   },
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
       jsx: true
     },
-    sourceType: "module"
+    sourceType: 'module'
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    indent: ["error", 2],
-    "linebreak-style": 0,
+    indent: ['error', 2],
+    'linebreak-style': 0,
     quotes: [
-      "error",
-      "single",
+      'error',
+      'single',
       {
         avoidEscape: true
       }
     ],
-    "no-console": 0,
-    "no-unused-vars": 1,
-    "react/prop-types": 0
+    'no-console': 0,
+    'no-unused-vars': 1,
+    'react/prop-types': 0
   }
 };

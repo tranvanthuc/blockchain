@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { renderTextField } from 'components/MaterialForm';
+import { renderTextField, renderCheckbox } from 'components/MaterialForm';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Paper,
-  Typography,
-  Grid,
-  Button,
-  InputAdornment
-} from '@material-ui/core';
+import { Paper, Typography, Grid, Button } from '@material-ui/core';
 import validate from './validate';
 import styles from './style';
-import './style.scss';
 import { Lock } from '@material-ui/icons';
 
 class FormLogin extends Component {
@@ -40,27 +33,19 @@ class FormLogin extends Component {
               component="h1"
               className="login-header mb-3"
             >
-              Login
+              Register
             </Typography>
 
-            <Typography className="my-2" component="h6">
-              Please check that you are visiting {data.link}
-            </Typography>
             <form onSubmit={handleSubmit}>
-              <Field
-                name="link"
-                component={renderTextField}
-                disabled={true}
-                fullWidth={true}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Lock className={classes.icon} />
-                    </InputAdornment>
-                  )
-                }}
-              />
-
+              <Grid item xs={12}>
+                <Field
+                  name="username"
+                  type="text"
+                  component={renderTextField}
+                  fullWidth={true}
+                  placeholder="Username"
+                />
+              </Grid>
               <Grid item xs={12}>
                 <Field
                   name="email"
@@ -82,10 +67,19 @@ class FormLogin extends Component {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography align="right" component="h6" className="my-2">
-                  <Link to="/#">Forgot password</Link>
-                </Typography>
+                <Field
+                  name="confirm_password"
+                  className={classes.textField}
+                  fullWidth={true}
+                  component={renderTextField}
+                  type="password"
+                  placeholder="Confirm assword"
+                />
               </Grid>
+              <Typography className="my-2" component="h6">
+                <Field name="term" component={renderCheckbox} />I agree with
+                service Terms & Conditions
+              </Typography>
               <Grid item xs={12}>
                 <Button
                   type="submit"
@@ -93,11 +87,11 @@ class FormLogin extends Component {
                   color="primary"
                   fullWidth={true}
                 >
-                  Login
+                  Register
                 </Button>
               </Grid>
               <Typography align="center" component="h6" className="my-2">
-                Not on bit yet? <Link to="/register">Register</Link>
+                Already have an account? <Link to="/login">Login</Link>
               </Typography>
             </form>
           </Paper>

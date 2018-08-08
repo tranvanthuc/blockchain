@@ -10,19 +10,21 @@ export const renderTextField = ({
   <TextField
     label={label}
     placeholder={label}
-    error={touched && error}
+    error={error ? true : false}
     helperText={touched && error}
     {...input}
     {...custom}
   />
 );
 
-export const renderCheckbox = ({ input, label }) => (
-  <Checkbox
-    label={label}
-    checked={input.value ? true : false}
-    onCheck={input.onChange}
-  />
+export const renderCheckbox = ({ input, label, meta: { error } }) => (
+  <span>
+    <Checkbox
+      label={label}
+      checked={input.value ? true : false}
+      onChange={input.onChange}
+    />
+  </span>
 );
 
 export const renderRadioGroup = ({ input, ...rest }) => (
@@ -38,7 +40,6 @@ export const renderSelect = ({
   input,
   label,
   meta: { touched, error },
-  children,
   ...custom
 }) => (
   <Select
