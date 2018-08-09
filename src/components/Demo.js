@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Demo extends Component {
   constructor(props) {
     super(props);
-    console.log("constructor");
+    console.log('constructor');
     this.state = {
       counter: 0,
       isCounterHidden: false
@@ -23,22 +23,22 @@ class Demo extends Component {
   };
 
   componentWillMount() {
-    console.log("componentWillMount");
+    console.log('componentWillMount');
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log('componentDidMount');
     this.setState((prevState, props) => ({
       counter: prevState.counter + 1
     }));
   }
 
   componentWillReceiveProps() {
-    console.log("componentWillReceiveProps");
+    console.log('componentWillReceiveProps');
   }
 
   shouldComponentUpdate() {
-    console.log("shouldComponentUpdate couter : " + this.state.counter);
+    console.log('shouldComponentUpdate couter : ' + this.state.counter);
     if (this.state.counter == 2) {
       return false;
     }
@@ -47,15 +47,15 @@ class Demo extends Component {
   }
 
   componentWillUpdate() {
-    console.log("componentWillUpdate couter : " + this.state.counter);
+    console.log('componentWillUpdate couter : ' + this.state.counter);
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate counter: " + this.state.counter);
+    console.log('componentDidUpdate counter: ' + this.state.counter);
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
+    console.log('componentWillUnmount');
   }
 
   renderBoxIncrement() {
@@ -73,12 +73,12 @@ class Demo extends Component {
   render() {
     const { isCounterHidden } = this.state;
     console.log(this.state.counter);
-    console.log("render");
+    console.log('render');
 
     return (
       <div>
         <button onClick={this.toggleCounter}>
-          {isCounterHidden ? "Show" : "Hidden"}
+          {isCounterHidden ? 'Show' : 'Hidden'}
         </button>
         {isCounterHidden ? null : this.renderBoxIncrement()}
       </div>

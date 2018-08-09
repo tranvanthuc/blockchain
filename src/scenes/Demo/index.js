@@ -5,66 +5,47 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { demoTypes } from '../../redux/demo';
 
-const styles = theme => ({
-  root: {
-    overflow: 'hidden',
-    padding: `0 ${theme.spacing.unit * 3}px`
-  },
-  wrapper: {
-    maxWidth: 400
-  },
-  paper: {
-    margin: theme.spacing.unit,
-    padding: theme.spacing.unit * 2
-  }
-});
+class App extends React.Component {
+  render() {
+    const { fetching, dog, onRequestDog, error, dogImage } = this.props;
 
-function AutoGridNoWrap(props) {
-  const { classes } = props;
-  const message = `Truncation should be conditionally applicable on this long line of text
-                    as this is a much longer line than what the container can support. `;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to Dog Saga</h1>
+        </header>
 
-  return (
-    <div className={classes.root}>
-      <div className={classes.wrapper}>
-        <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" spacing={16}>
-            <Grid item>
-              <Avatar>W</Avatar>
-            </Grid>
-            <Grid item xs zeroMinWidth>
-              <Typography noWrap>{message}</Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-        <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" spacing={16}>
-            <Grid item>
-              <Avatar>W</Avatar>
-            </Grid>
-            <Grid item xs>
-              <Typography noWrap>{message}</Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-        <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" spacing={16}>
-            <Grid item>
-              <Avatar>W</Avatar>
-            </Grid>
-            <Grid item xs>
-              <Typography>{message}</Typography>
-            </Grid>
-          </Grid>
-        </Paper>
+        <img src={dogImage} alt="" />
+
+        {fetching ? (
+          <button disabled>Fetching...</button>
+        ) : (
+          <button onClick={onRequestDog}>Request a Dog</button>
+        )}
+
+        {error && <p style={{ color: 'red' }}>Uh oh - something went wrong!</p>}
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-AutoGridNoWrap.propTypes = {
-  classes: PropTypes.object.isRequired
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    dogImage: state.demoReducers.dogReducer.data
+  };
 };
 
-export default withStyles(styles)(AutoGridNoWrap);
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequestDog: () => dispatch({ type: demoTypes.dogType.GET_DOG_REQUEST })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

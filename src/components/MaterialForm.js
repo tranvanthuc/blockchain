@@ -10,14 +10,14 @@ export const renderTextField = ({
   <TextField
     label={label}
     placeholder={label}
-    error={error ? true : false}
+    error={touched && error ? true : false}
     helperText={touched && error}
     {...input}
     {...custom}
   />
 );
 
-export const renderCheckbox = ({ input, label}) => (
+export const renderCheckbox = ({ input, label }) => (
   <span>
     <Checkbox
       label={label}
