@@ -23,9 +23,6 @@ class FormLogin extends Component {
   render() {
     const {
       handleSubmit,
-      pristine,
-      reset,
-      submitting,
       classes,
       data
     } = this.props;
@@ -63,12 +60,12 @@ class FormLogin extends Component {
 
               <Grid item xs={12}>
                 <Field
-                  name="email"
+                  name="user_id"
                   className={classes.textField}
                   fullWidth={true}
                   component={renderTextField}
                   type="text"
-                  placeholder="Email"
+                  label="UserID"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -78,7 +75,7 @@ class FormLogin extends Component {
                   fullWidth={true}
                   component={renderTextField}
                   type="password"
-                  placeholder="Password"
+                  label="Password"
                 />
               </Grid>
               <Grid item xs={12}>

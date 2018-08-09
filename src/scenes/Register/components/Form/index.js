@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Grid, Button } from '@material-ui/core';
 import validate from './validate';
 import styles from './style';
-import { Lock } from '@material-ui/icons';
 
 class FormLogin extends Component {
   componentDidMount() {
@@ -16,11 +15,7 @@ class FormLogin extends Component {
   render() {
     const {
       handleSubmit,
-      pristine,
-      reset,
-      submitting,
       classes,
-      data
     } = this.props;
 
     return (

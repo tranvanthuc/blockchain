@@ -17,7 +17,7 @@ export const renderTextField = ({
   />
 );
 
-export const renderCheckbox = ({ input, label, meta: { error } }) => (
+export const renderCheckbox = ({ input, label}) => (
   <span>
     <Checkbox
       label={label}

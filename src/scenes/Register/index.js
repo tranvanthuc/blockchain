@@ -7,8 +7,6 @@ class Register extends Component {
   };
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
-
     return (
       <div>
         <Form onSubmit={this.onSubmit} />
