@@ -7,16 +7,13 @@ import { Paper, Typography, Grid, Button } from '@material-ui/core';
 import validate from './validate';
 import styles from './style';
 
-class FormLogin extends Component {
+class Register extends Component {
   componentDidMount() {
     this.props.initialize(this.props.data);
   }
 
   render() {
-    const {
-      handleSubmit,
-      classes,
-    } = this.props;
+    const { handleSubmit, classes } = this.props;
 
     return (
       <div className={classes.root}>
@@ -38,7 +35,7 @@ class FormLogin extends Component {
                   type="text"
                   component={renderTextField}
                   fullWidth={true}
-                  placeholder="Username"
+                  label="Username"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -48,7 +45,7 @@ class FormLogin extends Component {
                   fullWidth={true}
                   component={renderTextField}
                   type="text"
-                  placeholder="Email"
+                  label="Email"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -58,7 +55,7 @@ class FormLogin extends Component {
                   fullWidth={true}
                   component={renderTextField}
                   type="password"
-                  placeholder="Password"
+                  label="Password"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -68,7 +65,7 @@ class FormLogin extends Component {
                   fullWidth={true}
                   component={renderTextField}
                   type="password"
-                  placeholder="Confirm assword"
+                  label="Confirm assword"
                 />
               </Grid>
               <Typography className="my-2" component="h6">
@@ -95,9 +92,9 @@ class FormLogin extends Component {
     );
   }
 }
-const styleFormLogin = withStyles(styles)(FormLogin);
+const styleRegister = withStyles(styles)(Register);
 
 export default reduxForm({
-  form: 'fLogin',
+  form: 'fRegister',
   validate
-})(styleFormLogin);
+})(styleRegister);

@@ -15,17 +15,13 @@ import styles from './style';
 import './style.scss';
 import { Lock } from '@material-ui/icons';
 
-class FormLogin extends Component {
+class Login extends Component {
   componentDidMount() {
     this.props.initialize(this.props.data);
   }
 
   render() {
-    const {
-      handleSubmit,
-      classes,
-      data
-    } = this.props;
+    const { handleSubmit, classes, data } = this.props;
 
     return (
       <div className={classes.root}>
@@ -35,7 +31,7 @@ class FormLogin extends Component {
               variant="headline"
               align="center"
               component="h1"
-              className="login-header mb-3"
+              className="mb-3"
             >
               Login
             </Typography>
@@ -103,9 +99,9 @@ class FormLogin extends Component {
     );
   }
 }
-const styleFormLogin = withStyles(styles)(FormLogin);
+const styleLogin = withStyles(styles)(Login);
 
 export default reduxForm({
   form: 'fLogin',
   validate
-})(styleFormLogin);
+})(styleLogin);
