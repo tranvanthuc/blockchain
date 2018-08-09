@@ -3,15 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
-const rootReducer = combineReducers({
-  form: formReducer
-});
+import createSagaMiddleware from 'redux-saga';
+import { rootReducers, rootSagas } from './redux';
 
-const store = createStore(rootReducer, devToolsEnhancer());
+const sagaMiddleware = createSagaMiddleware();
+const reduxDevTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+const store = createStore(
+  rootReducers,
+  compose(
+    applyMiddleware(sagaMiddleware),
+    reduxDevTools
+  )
+);
+
+// run saga
+sagaMiddleware.run(rootSagas);
 
 ReactDOM.render(
   <Provider store={store}>
