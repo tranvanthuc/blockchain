@@ -54,15 +54,17 @@ class SendFuns extends Component {
                   Withdraw from
                 </Typography>
                 <Paper className="clearfix my-3 p-2">
-                  <span className="float-left">
-                    <CheckCircleSharp className="pr-2" />
-                    <span className="align-super">Bitcoin Wallet</span>
-                  </span>
-                  <span className="float-right text-right">
+                  <div className="float-left">
+                    <CheckCircleSharp
+                      className={classNames(classes.iconWD, 'float-left')}
+                    />{' '}
+                    <div className="float-left mt-2">Bitcoin Wallet</div>
+                  </div>
+                  <div className="float-right text-right">
                     <span>0.0811123112</span> BTC
                     <br />
-                    <span className="mt-1">=$231.08</span>
-                  </span>
+                    <span className="">=$231.08</span>
+                  </div>
                 </Paper>
               </Grid>
               {/* withdraw from */}

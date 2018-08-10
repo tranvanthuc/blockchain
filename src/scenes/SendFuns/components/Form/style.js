@@ -17,6 +17,10 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 0.5,
     color: 'green'
   },
+  iconWD: {
+    paddingRight: theme.spacing.unit,
+    marginTop: '5%'
+  },
   iconRepeat: {
     margin: theme.spacing.unit * 3,
     marginBottom: theme.spacing.unit * -1
